@@ -1,36 +1,31 @@
+/* ---- Dans ce fichier vous trouverez le CSS relatifs aux éléments suivants: ----
+    1- Modale de contact
+    2- Page photographe
+    3- Filtre/Dropdown
+    4- Médias
+    5- Bandeau
+    6- Modale carroussel
+    7- Boutons modale carroussel
+*/
+
+/*-----------------------------------------------------------*/
+
+/* 1- Style apporté à la modale de contact */
 #contact_modal {
     display: none;
 }
 
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
-}
-
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .modal {
+    position: relative;
+    z-index: 3;
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     padding: 35px;
     margin: auto;
+    gap: 50px;
 }
 
 .modal header {
@@ -74,3 +69,371 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+#message {
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+}
+
+/*-----------------------------------------------------------*/
+
+/* 2- Style général apporté à la page d'un photographe */
+.photograph-header {
+    background-color: #FAFAFA;
+    height: 300px;
+    margin: 0 100px;
+    /* display: flex; */
+}
+
+.userPicture {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.photographerCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin: 3.125rem;
+}
+
+/* 
+.photographerCard a {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    text-decoration: none;
+} */
+
+
+.photographerCard h1 {
+    font-size: 64px;
+    font-weight: 400;
+    margin: inherit;
+    color: #D3573C;
+}
+
+.photographerCard h2 {
+    font-size: 24px;
+    font-weight: 400;
+    margin: inherit;
+    margin-bottom: 10px;
+    color: #901C1C;
+}
+
+.photographerCard p {
+    font-size: 18px;
+    font-weight: 400;
+    margin: inherit;
+}
+
+.photographerCard .tagline {
+    color: #525252;
+}
+
+/*-----------------------------------------------------------*/
+
+/* 3- Style apporté à toute la section portant sur le filtre et son dropdown.*/
+#filter_section {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+}
+
+#filter {
+    width: 275px !important;
+    text-align: left;
+    background-color: #911C1C;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+}
+
+label {
+    font-size: 18px;
+    font-weight: 700;
+    position: relative;
+}
+
+select {
+    appearance: none;
+}
+
+#dropdown__menu {
+    background-color: #901C1C;
+    border-radius: 5px;
+    color: white;
+    width: 275px;
+    margin-top: -10px;
+    display: none;
+}
+
+#dropdown__menu :hover {
+    cursor: pointer;
+}
+
+#dropdown__menu_hidden {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: inherit;
+    margin: inherit;
+    padding-top: 5px;
+}
+
+#dropdown__menu_hidden li {
+    padding-block: 14px;
+    width: 80%;
+    text-align: left;
+    border-top: 2px solid #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#dropdown__menu_hidden li:hover {
+    background-color: #DB8876;
+    color: black;
+}
+
+.select__container {
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+}
+
+#select__container-icon {
+    position: absolute;
+    top: -2px;
+    left: 245px;
+    cursor: pointer;
+    filter: invert(95%) sepia(95%) saturate(0%) hue-rotate(155deg) brightness(106%) contrast(106%);
+    margin-right: 1rem;
+    transition: rotate 250ms ease-out;
+}
+
+#select__container-icon img {
+    width: 1.125rem;
+}
+
+
+.isActive {
+    rotate: 180deg;
+}
+
+.not-hidden {
+    display: block !important;
+}
+
+/*-----------------------------------------------------------*/
+
+/* 4- Style apporté aux médias sur la page d'un photographe*/
+.mediaCard {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+
+.mediaCard article {
+    min-width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-right: .5rem; */
+}
+
+.mediaCard img {
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+    cursor: pointer;
+    object-position: center;
+    border-radius: 5px;
+}
+
+.descriptionPicture {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    color: #901C1C;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.descriptionPicture .likes {
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+}
+
+.descriptionPicture .heart {
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-left: .5rem;
+}
+
+
+/*-----------------------------------------------------------*/
+
+/* 5- Style apporté au bandeau récapitulatif d'un photographe. */
+
+.contact_button {
+    font-size: 1.25rem;
+    padding: 1rem 0.7rem;
+    color: whitesmoke;
+    background-color: #901C1C;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+
+}
+
+.dayPrice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    z-index: 2;
+    background-color: #DB8876;
+    bottom: 0px;
+    right: 35px;
+    border-radius: 5px;
+    width: 20%;
+    height: 79px;
+}
+
+.dayPrice p {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.photographerCard .likes {
+    display: flex;
+    align-items: center;
+    /* min-width: 150px; */
+    width: 18px;
+    height: 18px;
+}
+
+
+
+
+/*-----------------------------------------------------------*/
+
+/* 6- Style apporté à la modale du carroussel. */
+.modal_childrens {
+    width: 50%;
+    height: 75%;
+    position: relative;
+    top: 10%;
+    margin: auto;
+
+}
+
+#medias_modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(187, 187, 187, 0.47);
+
+}
+
+.modal-content,
+#carousel {
+    width: 100%;
+    height: 100%;
+    margin: 0px 20px;
+}
+
+#carousel img,
+#carousel video {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+/*-----------------------------------------------------------*/
+
+/* 7- Style apporté à la modale du carroussel et aux boutons previous, next et close. */
+.mediaModal {
+    height: 100%;
+    display: none;
+}
+
+.mediaModal.active {
+    display: block;
+}
+
+.mediaModal p {
+    margin: 0;
+    color: #901C1C;
+}
+
+.modal-content {
+    display: flex;
+    background-color: white;
+    padding: 25px 40px 40px 40px;
+}
+
+.previous-button {
+    background: url('/assets/icons/prev.png') center no-repeat;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    background-size: 20px;
+
+}
+
+#left-side {
+    display: flex;
+    height: 50%;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+#right-side {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-button {
+    background: url('/assets/icons/closemodal.png') center no-repeat;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    background-size: 20px;
+
+}
+
+.next-button {
+    background: url('/assets/icons/next.png') center no-repeat;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    background-size: 20px;
+
+}
+
+.next-button img {
+    width: 30px;
+    height: 30px;
+}
+
+/*-----------------------------------------------------------*/
