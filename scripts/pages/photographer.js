@@ -90,11 +90,11 @@ async function displayPhotographer(photographer, medias) {
         displayModal(photographer)
     })
 
+    //Affichage de notre liste déroulante au click dessus
     const dropDown = document.querySelector('.select__container');
-
     dropDown.addEventListener('click', () => {
         // console.log("on est là");
-        filterDrop()
+        filterDrop() //Appel la fonction d'affichage de notre liste déroulante
     })
 
 
