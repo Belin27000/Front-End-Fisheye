@@ -2,8 +2,8 @@ function photographerFactory(data) {
     //Met en forme les données passées en paramètre dans photographerFactory(photographer);
     //qui se trouve dans : const photographerModel = photographerFactory(photographer);
     const { name, id, portrait, city, country, tagline, price } = data;
-
     let url = new URL(window.location.href);
+
 
 
     //Tu crées une variable qui stock la photo reçu via data
@@ -51,5 +51,16 @@ function photographerFactory(data) {
         return (photographerCard)
     }
 
-    return { name, picture, getUserCardDOM, getUser, }
+    function CalculLikes() {
+        let totalLikes = 0;
+        let allLikes = document.getElementsByClassName('likes');
+
+        for (let i = 1; i < allLikes.length; i++) {
+            totalLikes += parseInt(allLikes[i].textContent);
+        }
+
+        return totalLikes;
+    }
+
+    return { name, picture, getUserCardDOM, getUser, CalculLikes }
 }

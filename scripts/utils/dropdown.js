@@ -1,6 +1,8 @@
 // Ouvre et ferme le filtre de triage des medias
 
 function filterDrop() {
+
+
     // AJoute ou supprime la class .not-hidden à notre liste de tri
     const dropdownDisplay = document.querySelector('#dropdown__menu');
     dropdownDisplay.classList.toggle("not-hidden") //Affiche ou masque notre menu déroulant
@@ -22,6 +24,19 @@ function filterDrop() {
         activeMenu.removeAttribute("class", "isActive") //On tourne l'icon flèche vers le bas
     }
 
+    const options = document.querySelectorAll('.dropdown__options')
+    //on va selectionner chaque option possible
+    const btn = document.getElementById('filter')
+    //Puis on va modifier le filtre
+
+    options.forEach(option => {
+        //Pour chaque option du menu déroulant
+        option.addEventListener('click', () => {
+            //On affiche le texte du filtre
+            btn.textContent = option.textContent;
+
+        })
+    })
 
 
 }

@@ -38,7 +38,7 @@
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: max(2.5vw, 24px);
     font-weight: normal;
     text-align: center;
 }
@@ -74,6 +74,9 @@ form input {
     width: 100%;
     max-width: 100%;
     height: 200px;
+    border-radius: 5px;
+    border: none;
+
 }
 
 /*-----------------------------------------------------------*/
@@ -173,6 +176,7 @@ select {
     display: none;
 }
 
+
 #dropdown__menu :hover {
     cursor: pointer;
 }
@@ -184,8 +188,8 @@ select {
     justify-content: space-between;
     align-items: center;
     padding: inherit;
-    margin: inherit;
-    padding-top: 5px;
+    margin-top: inherit;
+    padding-top: 8px;
 }
 
 #dropdown__menu_hidden li {
@@ -200,6 +204,7 @@ select {
 #dropdown__menu_hidden li:hover {
     background-color: #DB8876;
     color: black;
+    height: 100%;
 }
 
 .select__container {
@@ -321,6 +326,10 @@ select {
     /* min-width: 150px; */
     width: 18px;
     height: 18px;
+}
+
+.heart2 {
+    margin-left: .4rem;
 }
 
 

@@ -1,65 +1,3 @@
-// function mediaFactory(data) {
-//     //console.log(data);
-//     //console.log(mediaStyle);
-//     const { image, title, likes, video } = data
-//     console.log(data);
-//     // console.log(title);
-//     // console.log(image);
-
-//     const picture = `assets/Photos/${image}`;
-//     const getVideo = `assets/Photos/${video}`;
-//     console.log(getVideo);
-//     // console.log(picture);
-//     // console.log(likes);
-
-//     let mediaStyle = data.hasOwnProperty('video')
-//     console.log(mediaStyle);
-//     function getMediaCardDOM() {
-//         const article = document.createElement('article');
-//         //  console.log(mediaStyle)
-//         console.log(mediaStyle);
-//         if (mediaStyle) {
-//             article.insertAdjacentHTML(
-//                 "afterbegin",
-//                 `
-
-//                 <img src="${picture}" alt="Titre de la photo:${title}">
-//                 <div class="legend">
-//                 <p class="tagline" aria-label="Le titre de la photo est ${title}.">${title}</p>
-//                 <p class="likes" aria-label="Le nombre de like sur cette photo est de ${likes}.">${likes}<i class="fas fa-heart"></i></p>
-//                 </div>
-//                 `
-//             )
-//             return (article);
-
-//         } else {
-
-//             console.log(video);
-//             article.insertAdjacentHTML(
-//                 "afterbegin",
-//                 `
-//                 <video width="350" height="300" alt="${this.title}" class="video" tabindex="0">
-//                 <source src="${video}" type=video/mp4>
-//                 </video>
-//                             <div class="legend">
-//                             <p class="tagline" aria-label="Le titre de la photo est ${title}.">${title}</p>
-//                             <p class="likes" aria-label="Le nombre de like sur cette photo est de ${likes}.">${likes}<i class="fas fa-heart"></i></p>
-//                             </div>
-//                     `
-//             )
-//         }
-
-//     }
-
-
-
-//     return { getMediaCardDOM }
-//     //console.log(data);
-
-
-// }
-
-
 /**
     * La classe Medias représente la structure de base pour tous les types de médias.
     * @class
@@ -75,6 +13,7 @@ class Medias {
     */
     constructor(data) {
         const { date, id, likes, photographerId, price, title } = data;
+
         this.title = title;
         this.likes = likes;
         this.id = id;
@@ -87,11 +26,12 @@ class Medias {
             `
                 <div class ="descriptionPicture">
                     <p tabindex="0">${this.title}</p>
-                    <div class="likes"><p tabindex="0">${this.likes}</p><img tabindex="0" class="heart" src="assets/icons/Heart.png" alt="icône coeur permettant de liker un média"/></div>
+                    <div class="likes"><p class=likesNumber tabindex="0">${this.likes}</p><img tabindex="0" class="heart" src="assets/icons/Heart.png" alt="icône coeur permettant de liker un média"/></div>
                 </div>  
             `
         )
         return (article);
+
     }
 }
 
