@@ -58,6 +58,17 @@ function initMediasModal(medias) {
             modal.querySelector('.mediaModal:last-child').classList.add('active')
         }
     });
+    // Ajout d'un évènement au clique sur sur le bouton 'next', permettant de retirer au média affiché la classe 'active', et d'attribuer au média précédent la classe 'active'.
+    nextButton.addEventListener("click", function () {
+        let m = modal.querySelector('.mediaModal.active')
+        m.classList.remove('active')
+
+        if (m.nextElementSibling) {
+            m.nextElementSibling.classList.add('active')
+        } else {
+            modal.querySelector('.mediaModal:last-child').classList.add('active')
+        }
+    });
 }
 
 function openMediasModal(id) {
