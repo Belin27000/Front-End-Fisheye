@@ -220,7 +220,7 @@ async function displayPhotographer(photographer, medias) {
         selectedMedia.addEventListener('click', () => {
 
             const allMediaModal = displayMediaModal(allMedia)
-
+            console.log(allmedia);
             //Masque les informations de contact de la modal
             const lboxModal = document.querySelector('.modal')
             lboxModal.setAttribute("id", "medias_modal")
