@@ -105,8 +105,8 @@ async function displayPhotographer(photographer, medias) {
     // Initialisation de la variable pour ajouter un like au media du photograph
     const likeMedia = document.querySelectorAll('.likesNumber')
     const heartMedia = document.querySelectorAll(".heart")
-    console.log(likeMedia);
-    console.log(heartMedia.length);
+    // console.log(likeMedia);
+    // console.log(heartMedia.length);
 
     // console.log(heartMedia);
     // console.log(newHeartMedia);
@@ -196,60 +196,49 @@ async function displayPhotographer(photographer, medias) {
     /***********************Gestion de la Lightbox***********************/
 
     const allMedia = document.querySelectorAll('.mediaCard article')
-    console.log(allMedia);
+
 
     for (let i = 0; i < allMedia.length; i++) {
 
         /**
          * Gestion des cliques sur les medias sans prise en compte des cliques sur les like ou titres
-         */
+        */
+        // console.log(allMedia[i]);
         const pictureList = allMedia[i].querySelector('.mediaPicture')
         const videoList = allMedia[i].querySelector('.video')
         if (pictureList) {
-            console.log(pictureList);
+            // console.log(pictureList);
             selectedMedia = pictureList
+            position = i
         } else {
+            position = i
 
-            console.log(videoList);
+            // console.log(videoList);
             selectedMedia = videoList
         }
 
         selectedMedia.addEventListener('click', () => {
-            // const modal = document.getElementById("contact_modal");
-            // const checkModalOpen = modal.style.display;
 
-            // console.log(checkModalOpen);
+            const allMediaModal = displayMediaModal(allMedia)
+
+            //Masque les informations de contact de la modal
             const lboxModal = document.querySelector('.modal')
             lboxModal.setAttribute("id", "medias_modal")
+
             const mediaModal = document.getElementById('contact_modal')
             mediaModal.classList.add('mediaModal')
 
-            // lboxModal.classList.add('mediaModal')
-            // lboxModal.classList.add('active')
-
-            const cleanModalTitle = document.querySelector('.modal header')
-            const cleanModalForm = document.querySelector('.modal form')
-            cleanModalTitle.classList.add('mediaModal')
-            cleanModalForm.classList.add('mediaModal')
-
-
-            const createModal = document.createElement('section')
-            createModal.classList.add('modal_childrens')
+            const createModal = document.createElement('div')//préparation du container carousel
+            createModal.setAttribute("id", "carousel")
 
             mediaModal.appendChild(createModal)
-            createModal.insertAdjacentHTML(
-                "beforeend",
-                `
-                        <div class="active">
-                            <a href="#" tabindex="0" class="previous-button></a>
-                            <a href="#" tabindex="0" class="next-button></a>
-                        </div>
-                `
-            )
+            createModal.insertAdjacentElement("afterbegin", allMediaModal)
 
-
-            // const closeBtn = document.querySelector('.modal img')
-            // closeBtn.classList.add('close-button')
+            const closeBtnInsert = document.querySelector('#carousel')
+            const closeBtn = document.createElement('img')
+            closeBtn.setAttribute("onclick", "closeModal()")
+            closeBtn.classList.add('close-button')
+            closeBtnInsert.insertAdjacentElement("afterbegin", closeBtn)
             displayModal(photographer)
             // lboxModal.classList.remove('modal')
         })
@@ -271,18 +260,18 @@ async function displayPhotographer(photographer, medias) {
         */
         if (btn == 'Date') {
             medias.sort((a, b) => a.date < b.date ? -1 : 1);//trier par date croissante/décroissante des photo
-            console.log("c'est la date");
+            console.log("c'est la date")
 
         } else if (btn == 'Popularité') {
-            console.log("c'est la popularité");
+            console.log("c'est la popularité")
             medias.sort((a, b) => a.likes - b.likes)
         } else if (btn == 'Titre') {
-            console.log("c'est la titre");
+            console.log("c'est la titre")
             medias.sort((a, b) => a.title > b.title ? -1 : 1);//trier par ordre alphabetique des titres
         } else {
 
         }
-        mediaSection.innerHTML = '';
+        mediaSection.innerHTML = ''
         displayPhotographerMedia(medias)
 
     })
