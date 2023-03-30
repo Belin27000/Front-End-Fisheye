@@ -56,8 +56,33 @@ class ImageMedia extends Medias {
                 <img src="${this.image}" class="mediaPicture" alt="${this.title}" tabindex="0"/>
             `
         )
-        // console.log(article)
+
+        let imageModal = article.querySelectorAll('.mediaPicture')
+        imageModal.forEach(element => {
+            element.addEventListener('click', () => openMediasModal(this.id)) // Ajout d'un évènement au clique d'une image permettant l'ouverture de la modale carroussel.
+            element.addEventListener('keydown', (e) => { // Ajout d'un évènement à l'appuie du la touche "entrée" d'une image permettant l'ouverture de la modale carroussel.
+                if (e.key === 'Enter') {
+                    openMediasModal(this.id)
+                }
+            })
+        })
+
         return (article);
+    }
+
+    createMediaModal() {
+        const article = document.createElement('div')
+        article.setAttribute('id', 'mediaModal_' + this.id)
+        article.setAttribute('class', 'mediaModal')
+        article.insertAdjacentHTML(
+            "beforeend",
+            `
+                <img src="${this.image}" class="mediaPicture" alt="${this.title}" tabindex="0"/>
+                <p>${this.title}</p> 
+            `
+        )
+
+        return (article)
     }
 
 }
@@ -84,7 +109,34 @@ class VideoMedia extends Medias {
             `
         )
 
+        let imageModal = article.querySelectorAll('.video')
+        imageModal.forEach(element => {
+            element.addEventListener('click', () => openMediasModal(this.id)) // Ajout d'un évènement au clique d'une vidéo permettant l'ouverture de la modale carroussel.
+            element.addEventListener('keydown', (e) => { // Ajout d'un évènement à l'appuie du la touche "entrée" d'une vidéo permettant l'ouverture de la modale carroussel.
+                if (e.key === 'Enter') {
+                    openMediasModal(this.id)
+                }
+            })
+        })
+
         return (article);
+    }
+
+    createMediaModal() {
+        const article = document.createElement('div')
+        article.setAttribute('id', 'mediaModal_' + this.id)
+        article.setAttribute('class', 'mediaModal')
+        article.insertAdjacentHTML(
+            "beforeend",
+            `
+            <video width="350" height="300" class="video" alt="${this.title}" tabindex="0" controls auto>
+            <source src="${this.video}" type=video/mp4>
+            </video>
+            <p>${this.title}</p> 
+            `
+        )
+
+        return (article)
     }
 
 }

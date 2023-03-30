@@ -98,7 +98,7 @@ async function displayPhotographer(photographer, medias) {
     }
 
     displayPhotographerMedia(medias); // Appel de la fonction displayMedias.
-
+    initMediasModal(medias);
 
     /***********************Gestion des likes sur les médias***********************/
 
@@ -192,59 +192,6 @@ async function displayPhotographer(photographer, medias) {
         displayModal(photographer)
 
     })
-
-    /***********************Gestion de la Lightbox***********************/
-
-    const allMedia = document.querySelectorAll('.mediaCard article')
-
-
-    for (let i = 0; i < allMedia.length; i++) {
-
-        /**
-         * Gestion des cliques sur les medias sans prise en compte des cliques sur les like ou titres
-        */
-        // console.log(allMedia[i]);
-        const pictureList = allMedia[i].querySelector('.mediaPicture')
-        const videoList = allMedia[i].querySelector('.video')
-        if (pictureList) {
-            // console.log(pictureList);
-            selectedMedia = pictureList
-            position = i
-        } else {
-            position = i
-
-            // console.log(videoList);
-            selectedMedia = videoList
-        }
-
-        selectedMedia.addEventListener('click', () => {
-
-            const allMediaModal = displayMediaModal(allMedia)
-            console.log(allmedia);
-            //Masque les informations de contact de la modal
-            const lboxModal = document.querySelector('.modal')
-            lboxModal.setAttribute("id", "medias_modal")
-
-            const mediaModal = document.getElementById('contact_modal')
-            mediaModal.classList.add('mediaModal')
-
-            const createModal = document.createElement('div')//préparation du container carousel
-            createModal.setAttribute("id", "carousel")
-
-            mediaModal.appendChild(createModal)
-            createModal.insertAdjacentElement("afterbegin", allMediaModal)
-
-            const closeBtnInsert = document.querySelector('#carousel')
-            const closeBtn = document.createElement('img')
-            closeBtn.setAttribute("onclick", "closeModal()")
-            closeBtn.classList.add('close-button')
-            closeBtnInsert.insertAdjacentElement("afterbegin", closeBtn)
-            displayModal(photographer)
-            // lboxModal.classList.remove('modal')
-        })
-
-    }
-
 
     /***********************Gestion du Dropdown***********************/
 
