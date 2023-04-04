@@ -12,7 +12,7 @@ class Medias {
         * @param {number} data.id - l'ID unique du média.
     */
     constructor(data) {
-        const { date, id, likes, photographerId, price, title } = data;
+        const { id, likes, title } = data;
 
         this.title = title;
         this.likes = likes;
