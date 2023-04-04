@@ -43,12 +43,27 @@ function initMediasModal(medias) {
     }
 
     // Ajout d'un évènement au clique sur le bouton close, permettant d'ajouter du style à la modal pour ne plus l'afficher.
-    closeButton.addEventListener("click", function () {
+    closeButton.addEventListener("click", CloseMediaModal);
+    document.addEventListener("keydown", e => {
+        if (e.keyCode === 27) {
+            CloseMediaModal()
+        }
+    })
+    function CloseMediaModal() {
         modal.style.display = "none";
-    });
+
+    }
 
     // Ajout d'un évènement au clique sur sur le bouton 'previous', permettant de retirer au média affiché la classe 'active', et d'attribuer au média précédent la classe 'active'.
-    previousButton.addEventListener("click", function () {
+    previousButton.addEventListener("click", GoBack);
+    document.addEventListener("keydown", e => {
+        console.log(e);
+        if (e.keyCode === 37) {
+            GoBack()
+        }
+    })
+
+    function GoBack() {
         let m = modal.querySelector('.mediaModal.active')
         m.classList.remove('active')
 
@@ -57,9 +72,18 @@ function initMediasModal(medias) {
         } else {
             modal.querySelector('.mediaModal:last-child').classList.add('active')
         }
-    });
+
+    }
+
     // Ajout d'un évènement au clique sur sur le bouton 'next', permettant de retirer au média affiché la classe 'active', et d'attribuer au média précédent la classe 'active'.
-    nextButton.addEventListener("click", function () {
+    nextButton.addEventListener("click", GoNext);
+    document.addEventListener("keydown", e => {
+        if (e.keyCode === 39) {
+            GoNext()
+        }
+    })
+
+    function GoNext() {
         let m = modal.querySelector('.mediaModal.active')
         m.classList.remove('active')
 
@@ -68,11 +92,12 @@ function initMediasModal(medias) {
         } else {
             modal.querySelector('.mediaModal:last-child').classList.add('active')
         }
-    });
+    }
 }
 
 function openMediasModal(id) {
 
+    console.log(id);
     const modal = document.getElementById("medias_modal");
     const img = document.getElementById('mediaModal_' + id); // On récupère le média qui comporte l'id 'mediaModal_' + l'ID unique du média choisi.
 
