@@ -27,7 +27,8 @@ async function displayPhotographer(photographer, medias) {
 
     const photographersSection = document.querySelector(".photograph-header");
     //utilise les paramètre du photographe selectionné
-    const photographerModel = photographerFactory(photographer);
+    // eslint-disable-next-line no-undef
+    const photographerModel = photographerFactory(photographer);//stock le retour de la factorie
     const userCardDOM = photographerModel.getUser();
     photographersSection.appendChild(userCardDOM);
 
@@ -63,10 +64,6 @@ async function displayPhotographer(photographer, medias) {
     mediaSection.classList.add("mediaCard")
 
 
-    // Initialisation de la variable pour ajouter le nombre de like total de la page du photographe
-    const photographLike = document.querySelector("#totalLikes")
-
-
     /***********************Gestion des médias du photographe***********************/
 
     const displayPhotographerMedia = (medias) => {
@@ -82,11 +79,13 @@ async function displayPhotographer(photographer, medias) {
             // console.log(allLike);
 
             if (medias[i].image) { // Si le média contient une image.
+                // eslint-disable-next-line no-undef
                 let imageMedia = new ImageMedia(medias[i]) // Création d'une nouvelle instance de la classe ImageMedia.
                 let article = imageMedia.createMedia(); // Appel de la fonction createMedia de la classe ImageMedia.
                 mediaSection.appendChild(article);
 
             } else { // Si le média contient une vidéo.
+                // eslint-disable-next-line no-undef
                 let videoMedia = new VideoMedia(medias[i]) // Création d'une nouvelle instance de la classe VideoMedia.
                 let article = videoMedia.createMedia();// Appel de la fonction createMedia de la classe VideoMedia.
 
@@ -98,7 +97,8 @@ async function displayPhotographer(photographer, medias) {
     }
 
     displayPhotographerMedia(medias); // Appel de la fonction displayMedias.
-    initMediasModal(medias);
+    // eslint-disable-next-line no-undef
+    initMediasModal(medias);//initialise la modale des media
 
     /***********************Gestion des likes sur les médias***********************/
 
@@ -150,12 +150,11 @@ async function displayPhotographer(photographer, medias) {
     buttonContact.addEventListener('click', () => {
         const modal = document.getElementById("contact_modal");
         const checkModalOpen = modal.style.display;
-        console.log(checkModalOpen);
         if (checkModalOpen == 'block') {
-
+            console.log(checkModalOpen);
         } else {
             //ajoute le nom de l'artiste à la modal
-            artistName = photographer.name;
+            const artistName = photographer.name;
             const modalTitle = document.querySelector('.modal h2');
 
             const checkTitle = modalTitle.textContent.indexOf(artistName)//Empêche l'ajout du nom de l'artiste si celui-ci est déjà présent
@@ -189,7 +188,8 @@ async function displayPhotographer(photographer, medias) {
             )
         }
 
-        displayModal(photographer)
+        // eslint-disable-next-line no-undef
+        displayModal(photographer)//appel la modal contactForm
 
     })
 
@@ -198,6 +198,7 @@ async function displayPhotographer(photographer, medias) {
     //Affichage de notre liste déroulante au click dessus
     const dropDown = document.querySelector('.select__container');
     dropDown.addEventListener('click', () => {
+        // eslint-disable-next-line no-undef
         filterDrop(dropDown) //Appel la fonction d'affichage de notre liste déroulante
         // console.log(medias);
         // console.log(medias);
@@ -215,8 +216,6 @@ async function displayPhotographer(photographer, medias) {
         } else if (btn == 'Titre') {
             console.log("c'est la titre")
             medias.sort((a, b) => a.title > b.title ? -1 : 1);//trier par ordre alphabetique des titres
-        } else {
-
         }
         mediaSection.innerHTML = ''
         displayPhotographerMedia(medias)
@@ -226,5 +225,5 @@ async function displayPhotographer(photographer, medias) {
 
 
 
-};
+}
 init()

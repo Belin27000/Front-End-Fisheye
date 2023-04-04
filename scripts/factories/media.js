@@ -27,7 +27,7 @@ class Medias {
                 <div class ="descriptionPicture">
                     <p tabindex="0">${this.title}</p>
                     <div class="likes"><p class=likesNumber tabindex="0">${this.likes}</p><img tabindex="0" class="heart" src="assets/icons/Heart.png" alt="icône coeur permettant de liker un média"/></div>
-                </div>  
+                </div>
             `
         )
         return (article);
@@ -40,6 +40,7 @@ class Medias {
     * @class
     * @extends Medias
 */
+// eslint-disable-next-line no-unused-vars
 class ImageMedia extends Medias {
 
     constructor(data) {
@@ -59,9 +60,11 @@ class ImageMedia extends Medias {
 
         let imageModal = article.querySelectorAll('.mediaPicture')
         imageModal.forEach(element => {
+            // eslint-disable-next-line no-undef
             element.addEventListener('click', () => openMediasModal(this.id)) // Ajout d'un évènement au clique d'une image permettant l'ouverture de la modale carroussel.
             element.addEventListener('keydown', (e) => { // Ajout d'un évènement à l'appuie du la touche "entrée" d'une image permettant l'ouverture de la modale carroussel.
                 if (e.key === 'Enter') {
+                    // eslint-disable-next-line no-undef
                     openMediasModal(this.id)
                 }
             })
@@ -92,6 +95,7 @@ class ImageMedia extends Medias {
     * @class
     * @extends Medias
 */
+// eslint-disable-next-line no-unused-vars
 class VideoMedia extends Medias {
 
     constructor(data) {
@@ -111,9 +115,11 @@ class VideoMedia extends Medias {
 
         let imageModal = article.querySelectorAll('.video')
         imageModal.forEach(element => {
+            // eslint-disable-next-line no-undef
             element.addEventListener('click', () => openMediasModal(this.id)) // Ajout d'un évènement au clique d'une vidéo permettant l'ouverture de la modale carroussel.
             element.addEventListener('keydown', (e) => { // Ajout d'un évènement à l'appuie du la touche "entrée" d'une vidéo permettant l'ouverture de la modale carroussel.
                 if (e.key === 'Enter') {
+                    // eslint-disable-next-line no-undef
                     openMediasModal(this.id)
                 }
             })

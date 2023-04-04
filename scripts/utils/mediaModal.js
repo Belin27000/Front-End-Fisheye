@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function initMediasModal(medias) {
 
     const modal = document.getElementById("medias_modal");
@@ -29,12 +30,14 @@ function initMediasModal(medias) {
 
     for (let i = 0; i < medias.length; i++) {
         if (medias[i].image) {
+            // eslint-disable-next-line no-undef
             let imageMedia = new ImageMedia(medias[i])
             let article = imageMedia.createMediaModal();
 
             carousel.appendChild(article);
 
         } else {
+            // eslint-disable-next-line no-undef
             let videoMedia = new VideoMedia(medias[i])
             let article = videoMedia.createMediaModal();
 
@@ -95,6 +98,7 @@ function initMediasModal(medias) {
     }
 }
 
+// eslint-disable-next-line no-unused-vars
 function openMediasModal(id) {
 
     console.log(id);

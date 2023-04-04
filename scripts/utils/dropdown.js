@@ -1,14 +1,14 @@
 // Ouvre et ferme le filtre de triage des medias
 
-function filterDrop() {
-
+// eslint-disable-next-line no-unused-vars
+function filterDrop() {//fonction appelée au click sur le filtre de classement
 
     // AJoute ou supprime la class .not-hidden à notre liste de tri
     const dropdownDisplay = document.querySelector('#dropdown__menu');
     dropdownDisplay.classList.toggle("not-hidden") //Affiche ou masque notre menu déroulant
 
 
-    openMenu = dropdownDisplay.classList.contains("not-hidden")// controle si la class "not-hidden" est présente ou pas
+    const openMenu = dropdownDisplay.classList.contains("not-hidden")// controle si la class "not-hidden" est présente ou pas
 
 
     if (openMenu) {//si "not-hidden" est présent, le menu est affiché

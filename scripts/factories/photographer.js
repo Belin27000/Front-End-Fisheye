@@ -1,10 +1,9 @@
+//Fonction de traitement des information du photographe
+// eslint-disable-next-line no-unused-vars
 function photographerFactory(data) {
     //Met en forme les données passées en paramètre dans photographerFactory(photographer);
     //qui se trouve dans : const photographerModel = photographerFactory(photographer);
     const { name, id, portrait, city, country, tagline, price } = data;
-    let url = new URL(window.location.href);
-
-
 
     //Tu crées une variable qui stock la photo reçu via data
     const picture = `assets/photographers/${portrait}`;
@@ -17,7 +16,7 @@ function photographerFactory(data) {
                 <a href="./photographer.html?id=${id}" tabindex="0">
                     <img class="userPicture" src="${picture}" alt="Photo de profil de ${name}">
                     <h2>${name}</h2>
-                </a>        
+                </a>
                 <h3>${city}, ${country}</h3>
                 <p class="tagline">${tagline}</p>
                 <p class="price" aria-label="Le coût de prestation de ${name} est de ${price}€ par jour.">${price}€/jour</p>
