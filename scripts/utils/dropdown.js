@@ -37,6 +37,14 @@ function filterDrop() {//fonction appelée au click sur le filtre de classement
 
         })
     })
+    // window.addEventListener("keydown", (e) => {
+    //     if (e.key === "Escape") {
+    //         const dropdownDisplay = document.querySelector('#dropdown__menu');
+    //         dropdownDisplay.classList.toggle("not-hidden")
+    //         const activeMenu = document.querySelector("#select__container-icon img")
+    //         activeMenu.removeAttribute("class", "isActive")
+    //     }
+    // });
 
 
 }

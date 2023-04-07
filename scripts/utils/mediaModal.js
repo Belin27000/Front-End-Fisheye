@@ -37,6 +37,7 @@ function initMediasModal(medias) {
             carousel.appendChild(article);
 
         } else {
+
             // eslint-disable-next-line no-undef
             let videoMedia = new VideoMedia(medias[i])
             let article = videoMedia.createMediaModal();
@@ -46,27 +47,12 @@ function initMediasModal(medias) {
     }
 
     // Ajout d'un évènement au clique sur le bouton close, permettant d'ajouter du style à la modal pour ne plus l'afficher.
-    closeButton.addEventListener("click", CloseMediaModal);
-    document.addEventListener("keydown", e => {
-        if (e.keyCode === 27) {
-            CloseMediaModal()
-        }
-    })
-    function CloseMediaModal() {
+    closeButton.addEventListener("click", function () {
         modal.style.display = "none";
-
-    }
+    });
 
     // Ajout d'un évènement au clique sur sur le bouton 'previous', permettant de retirer au média affiché la classe 'active', et d'attribuer au média précédent la classe 'active'.
-    previousButton.addEventListener("click", GoBack);
-    document.addEventListener("keydown", e => {
-        console.log(e);
-        if (e.keyCode === 37) {
-            GoBack()
-        }
-    })
-
-    function GoBack() {
+    previousButton.addEventListener("click", function () {
         let m = modal.querySelector('.mediaModal.active')
         m.classList.remove('active')
 
@@ -75,27 +61,32 @@ function initMediasModal(medias) {
         } else {
             modal.querySelector('.mediaModal:last-child').classList.add('active')
         }
+    });
 
-    }
-
-    // Ajout d'un évènement au clique sur sur le bouton 'next', permettant de retirer au média affiché la classe 'active', et d'attribuer au média précédent la classe 'active'.
-    nextButton.addEventListener("click", GoNext);
-    document.addEventListener("keydown", e => {
-        if (e.keyCode === 39) {
-            GoNext()
-        }
-    })
-
-    function GoNext() {
+    // Ajout d'un évènement au clique sur sur le bouton 'previous', permettant de retirer au média affiché la classe 'active', et d'attribuer au média suivant la classe 'active'.
+    nextButton.addEventListener("click", function () {
         let m = modal.querySelector('.mediaModal.active')
         m.classList.remove('active')
 
         if (m.nextElementSibling) {
             m.nextElementSibling.classList.add('active')
         } else {
-            modal.querySelector('.mediaModal:last-child').classList.add('active')
+            modal.querySelector('.mediaModal:first-child').classList.add('active')
         }
-    }
+    });
+
+    // Ajout d'un évènement sur la page qui permets d'utiliser les évènements au clique grâce au clavier.
+    window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+            previousButton.click();
+        } else if (e.key === "ArrowRight") {
+            nextButton.click();
+        } else if (e.key === "Escape") {
+            closeButton.click();
+        }
+    });
+
+    return modal;
 }
 
 // eslint-disable-next-line no-unused-vars

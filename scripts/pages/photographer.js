@@ -44,7 +44,7 @@ async function displayPhotographer(photographer, medias) {
             <label class="label" for="select">Trier par</label>
             <div class="select__container" >
                 <div id="select__container-icon">
-                <img src="/assets/icons/dropdown.png" alt="icône flèche permettant de déplier le filtre dropdown" tabindex="0"/>
+                <img src="/assets/icons/dropdown.png" alt="icône flèche permettant de déplier le filtre dropdown"/>
                 </div>
                 <button id="filter" type="button" role="button" aria-haspopup="listbox" tabindex="0" aria-expanded="false">Veuillez selectionner</button>
                 <div id="dropdown__menu">
@@ -146,11 +146,11 @@ async function displayPhotographer(photographer, medias) {
     // Ajout de l'évènement au clique sur le bouton contact pour display la modale de contact.
     const buttonContact = document.querySelector('.contact_button');
 
-
     buttonContact.addEventListener('click', () => {
         const modal = document.getElementById("contact_modal");
         const checkModalOpen = modal.style.display;
         if (checkModalOpen == 'block') {
+
             console.log(checkModalOpen);
         } else {
             //ajoute le nom de l'artiste à la modal
@@ -162,34 +162,36 @@ async function displayPhotographer(photographer, medias) {
                 modalTitle.innerHTML = modalTitle.innerHTML + " " + artistName
             }
 
-            const formdiv = document.querySelector('form div')
-            formdiv.classList.add("firstname")
+            const formdiv = document.querySelector('form')
+            // formdiv.classList.add("firstname")
             // console.log(formdiv);
 
             //ajoute les champs du formulaire de contact
             const fieldModal = document.createElement("div");
             formdiv.appendChild(fieldModal);
             fieldModal.insertAdjacentHTML(
-                "afterend",
+                "afterbegin",
                 `
-            <div class="lastname">
-            <label>Nom</label>
-            <input />
-            </div>
-            <div class="email">
-            <label>Email</label>
-            <input />
-            </div>
-            <div class="message">
-            <label>Votre message</label>
-            <textarea id=message></textarea>
-            </div>
+              
+          <label for="firstname">Prénom</label>
+          <input id="firstname" tabindex="0" />
+
+            <label for="lastname">Nom</label>
+            <input id="lastname" tabindex="0" />
+
+            <label for="email">Email</label>
+            <input id="email" tabindex="0" />
+
+            <label for="message">Votre message</label>
+            <textarea id="message" tabindex="0"></textarea>
+
+            <button class="contact_button">Envoyer</button>
             `
             )
         }
 
         // eslint-disable-next-line no-undef
-        displayModal(photographer)//appel la modal contactForm
+        displayModal(photographer)
 
     })
 
@@ -222,8 +224,15 @@ async function displayPhotographer(photographer, medias) {
 
     })
 
+    const selectAccessibility = document.getElementsByClassName('dropdown__options')
+    for (let i = 0; i < selectAccessibility.length; i++) {
+        console.log(selectAccessibility[i]);
+        selectAccessibility[i].addEventListener('keydown', (e) => {
+            if (e.key === "Enter") {
+                selectAccessibility[i].click(); // Appel de la fonction similaire au clique.
+            }
+        });
 
-
-
+    }
 }
 init()
