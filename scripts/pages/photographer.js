@@ -105,11 +105,7 @@ async function displayPhotographer(photographer, medias) {
     // Initialisation de la variable pour ajouter un like au media du photograph
     const likeMedia = document.querySelectorAll('.likesNumber')
     const heartMedia = document.querySelectorAll(".heart")
-    // console.log(likeMedia);
-    // console.log(heartMedia.length);
 
-    // console.log(heartMedia);
-    // console.log(newHeartMedia);
 
     let likeMediaNb = [];//initialise le tableau de like
 
@@ -119,6 +115,13 @@ async function displayPhotographer(photographer, medias) {
         likeMediaNb.push(intlikeMedia)
 
         const newHeartMedia = Array.from(likeMediaNb)//crée une copie du tableau des likes
+
+        //ajoute un évènement clique sur le boutton 'Enter', permettant d'ajouter ou de retirer un like quand on est sur le coeur d'une photo
+        heartMedia[i].addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                heartMedia[i].click()
+            }
+        })
 
         heartMedia[i].addEventListener('click', () => {//Écoute le click sur un like des média
 
@@ -163,29 +166,30 @@ async function displayPhotographer(photographer, medias) {
             }
 
             const formdiv = document.querySelector('form')
-            // formdiv.classList.add("firstname")
-            // console.log(formdiv);
+
 
             //ajoute les champs du formulaire de contact
             const fieldModal = document.createElement("div");
+            fieldModal.classList.add('contacElement')
             formdiv.appendChild(fieldModal);
             fieldModal.insertAdjacentHTML(
                 "afterbegin",
                 `
-              
-          <label for="firstname">Prénom</label>
-          <input id="firstname" tabindex="0" />
+                <div>
+                <label for="firstname">Prénom</label>
+                <input id="firstname" tabindex="0"/>
+                
+                <label for="lastname">Nom</label>
+                <input id="lastname" tabindex="0" />
+                
+                <label for="email">Email</label>
+                <input id="email" tabindex="0" />
+                
+                <label for="message">Votre message</label>
+                <textarea id="message" tabindex="0"></textarea>
+                </div>
+                <button class="contact_button">Envoyer</button>
 
-            <label for="lastname">Nom</label>
-            <input id="lastname" tabindex="0" />
-
-            <label for="email">Email</label>
-            <input id="email" tabindex="0" />
-
-            <label for="message">Votre message</label>
-            <textarea id="message" tabindex="0"></textarea>
-
-            <button class="contact_button">Envoyer</button>
             `
             )
         }
