@@ -6,18 +6,23 @@ function displayModal() {//Fonction appeler au click sur contacter-moi
     modal.style.display = "block";
     modal.querySelector('.modal a').focus()
     focusables = Array.from(modal.querySelectorAll(focusableSelector))
-    console.log(modal.style.display);
 
-    window.addEventListener("keydown", () => {
-
+    window.addEventListener("keydown", (e) => {
 
         const modal = document.getElementById("contact_modal");
-
         let index = focusables.findIndex(f => f === modal.querySelector(':focus'))
 
         if (index >= focusables.length - 1) {
-            console.log(focusables);
             focusables[0].focus()
+        }
+
+        if (index === 5 && e.key === 'Enter') {
+            contactbutton.click()
+        }
+        if (index === 0 && e.key === 'Enter') {
+            closeModal()
+            const buttonContact = document.querySelector('.contact_button')//Focus back sur le boutton contactez-moi de la page du photograph
+            buttonContact.focus()
         }
 
     })
@@ -36,6 +41,7 @@ function displayModal() {//Fonction appeler au click sur contacter-moi
         }
         console.log(ObjectForm);
     })
+
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -44,14 +50,20 @@ function closeModal() {//fonction appeler pour fermer la modal
     modal.style.display = "none";
     const formdiv = document.querySelector('form')
     formdiv.innerHTML = ''
+
 }
 
-// }
+
 // Ajout d'un évènement à l'appui sur la touche 'échap' permettant la fermeture de la modale de formulaire de contact lorsque celle-ci est ouverture.
+
 window.addEventListener("keyup", (e) => {
-    if (e.key === "Escape") {
+    const modal = document.getElementById("contact_modal");
+
+    if (e.key === "Escape" && modal.style.display === 'block') {
         closeModal();//Fermeture de la modal
         const buttonContact = document.querySelector('.contact_button')//Focus back sur le boutton contactez-moi de la page du photograph
         buttonContact.focus()
     }
+
 });
+

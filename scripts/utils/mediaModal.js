@@ -49,6 +49,7 @@ function initMediasModal(medias) {
     // Ajout d'un évènement au clique sur le bouton close, permettant d'ajouter du style à la modal pour ne plus l'afficher.
     closeButton.addEventListener("click", function () {
         modal.style.display = "none";
+
     });
 
     // Ajout d'un évènement au clique sur sur le bouton 'previous', permettant de retirer au média affiché la classe 'active', et d'attribuer au média précédent la classe 'active'.
@@ -83,6 +84,7 @@ function initMediasModal(medias) {
             nextButton.click();
         } else if (e.key === "Escape") {
             closeButton.click();
+
         }
     });
 

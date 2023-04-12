@@ -178,23 +178,19 @@ async function displayPhotographer(photographer, medias) {
                 <div class="formData">
                     <label for="firstname">Prénom</label>
                     <input id="firstname" tabindex="0"/>
-                    <div id="firstNameErrorMSg" class="error"></div>
                 </div>
                 <div class="formData">
                     <label for="lastname">Nom</label>
                     <input id="lastname" tabindex="0" />
-                    <div id="lastNameErrorMSg" class="error"></div>
                 </div>
                 <div class="formData">
                     <label for="email">Email</label>
                     <input id="email" tabindex="0" />
-                    <div id="EmailErrorMSg" class="error"></div>
                 </div>
 
                 <div class="formData">
                 <label for="message">Votre message</label>
                 <textarea id="message" tabindex="0"></textarea>
-                <div id="messageErrorMSg" class="error"></div>
                 </div>
                 <button id="sendBtn" class="contact_button">Envoyer</button>
 
@@ -238,7 +234,6 @@ async function displayPhotographer(photographer, medias) {
 
     const selectAccessibility = document.getElementsByClassName('dropdown__options')
     for (let i = 0; i < selectAccessibility.length; i++) {
-        console.log(selectAccessibility[i]);
         selectAccessibility[i].addEventListener('keydown', (e) => {
             if (e.key === "Enter") {
                 selectAccessibility[i].click(); // Appel de la fonction similaire au clique.
