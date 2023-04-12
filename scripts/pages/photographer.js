@@ -175,20 +175,28 @@ async function displayPhotographer(photographer, medias) {
             fieldModal.insertAdjacentHTML(
                 "afterbegin",
                 `
-                <div>
-                <label for="firstname">Prénom</label>
-                <input id="firstname" tabindex="0"/>
-                
-                <label for="lastname">Nom</label>
-                <input id="lastname" tabindex="0" />
-                
-                <label for="email">Email</label>
-                <input id="email" tabindex="0" />
-                
+                <div class="formData">
+                    <label for="firstname">Prénom</label>
+                    <input id="firstname" tabindex="0"/>
+                    <div id="firstNameErrorMSg" class="error"></div>
+                </div>
+                <div class="formData">
+                    <label for="lastname">Nom</label>
+                    <input id="lastname" tabindex="0" />
+                    <div id="lastNameErrorMSg" class="error"></div>
+                </div>
+                <div class="formData">
+                    <label for="email">Email</label>
+                    <input id="email" tabindex="0" />
+                    <div id="EmailErrorMSg" class="error"></div>
+                </div>
+
+                <div class="formData">
                 <label for="message">Votre message</label>
                 <textarea id="message" tabindex="0"></textarea>
+                <div id="messageErrorMSg" class="error"></div>
                 </div>
-                <button class="contact_button">Envoyer</button>
+                <button id="sendBtn" class="contact_button">Envoyer</button>
 
             `
             )
