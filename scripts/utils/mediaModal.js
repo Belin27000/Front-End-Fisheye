@@ -9,12 +9,12 @@ function initMediasModal(medias) {
     <div class="modal_childrens">
         <div class="modal-content">
             <div id="left-side">
-                <span class="previous-button"></span>
+                <span class="previous-button" tabindex="0"></span>
             </div>
             <div id="carousel"></div>
             <div id="right-side">
-                <span class="close-button"></span>
-                <span class="next-button"></span>
+                <span class="close-button" tabindex="0"></span>
+                <span class="next-button" tabindex="0"></span>
             </div>
         </div>
     </div>
@@ -78,6 +78,7 @@ function initMediasModal(medias) {
 
     // Ajout d'un évènement sur la page qui permets d'utiliser les évènements au clique grâce au clavier.
     window.addEventListener("keydown", (e) => {
+
         if (e.key === "ArrowLeft") {
             previousButton.click();
         } else if (e.key === "ArrowRight") {
@@ -88,17 +89,46 @@ function initMediasModal(medias) {
         }
     });
 
+    // eslint-disable-next-line no-unused-vars
+    nextButton.addEventListener("focus", (e) => {
+        nextButton.addEventListener('keydown', (e) => {
+
+            if (e.key === "Enter") {
+                nextButton.click();
+            }
+
+        })
+    })
+
+    // eslint-disable-next-line no-unused-vars
+    previousButton.addEventListener("focus", (e) => {
+        previousButton.addEventListener('keydown', (e) => {
+            if (e.key === "Enter") {
+                previousButton.click()
+            }
+        })
+    })
+
+    // eslint-disable-next-line no-unused-vars
+    closeButton.addEventListener("focus", (e) => {
+        closeButton.addEventListener('keydown', (e) => {
+            if (e.key === "Enter") {
+                closeButton.click()
+            }
+        })
+    })
     return modal;
 }
 
 // eslint-disable-next-line no-unused-vars
 function openMediasModal(id) {
-
     console.log(id);
     const modal = document.getElementById("medias_modal");
     const img = document.getElementById('mediaModal_' + id); // On récupère le média qui comporte l'id 'mediaModal_' + l'ID unique du média choisi.
 
     modal.style.display = 'block' // On display block la modale.
+    let nextButton = document.querySelector('.next-button');
+    nextButton.focus()
     modal.querySelectorAll('.mediaModal').forEach(m => {
         m.classList.remove('active') // On vient enlever la classe 'active' à tous les médias de la modale.
     })

@@ -7,7 +7,6 @@ async function init() {
 
     const photographer = photographers.find(photographer => photographer.id == id)
     const medias = media.filter(medias => medias.photographerId == id)
-
     displayPhotographer(photographer, medias)
 }
 
