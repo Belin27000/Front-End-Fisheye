@@ -27,7 +27,7 @@ async function displayData(photographers) {
 }
 
 async function getPhotographers() {
-    return fetch('../../data/photographers.json')
+    return fetch('./data/photographers.json')
 
         .then(function (data) {
             return data.json();
