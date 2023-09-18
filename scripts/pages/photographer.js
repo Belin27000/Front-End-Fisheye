@@ -6,7 +6,9 @@ async function init() {
     const { photographers, media } = await getMedia();
 
     const photographer = photographers.find(photographer => photographer.id == id)
+    console.log(photographer);
     const medias = media.filter(medias => medias.photographerId == id)
+    console.log(media);
     displayPhotographer(photographer, medias)
 }
 
