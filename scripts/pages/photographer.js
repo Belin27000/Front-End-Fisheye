@@ -11,7 +11,7 @@ async function init() {
 }
 
 async function getMedia() {
-    return fetch('./data/photographers.json')
+    return fetch(' ../../data/photographers.json')
         .then(function (data) {
             return data.json();
 
